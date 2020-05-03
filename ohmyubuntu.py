@@ -2,9 +2,24 @@
 
 import subprocess
 import sys
+from os.path import expanduser
+from os import sep, linesep
 
 
 # Require Python >= 3.5
+
+def file_readlines(file: str):
+    with open(file, mode='r') as f:
+        line = f.readline()
+        while line:
+            yield line
+            line = f.readline()
+
+
+def write_to_file(file: str, contents: str):
+    with open(file, mode='w') as f:
+        f.writelines(contents)
+
 
 def capture_cmd_output(*args) -> str:
     result = subprocess.run(' '.join(args), shell=True, capture_output=True)
@@ -44,12 +59,26 @@ def install_software(*args) -> bool:
 
 
 class Zshrc(object):
+    def __init__(self) -> None:
+        self.zshrc_file = sep.join([expanduser("~"), ".zshrc"])
+
+        self.lines = []
+        self.plugins_line = -1
+
+        self._load_zshrc()
+
+    def _load_zshrc(self):
+        for no, line in enumerate(file_readlines(self.zshrc_file)):
+            self.lines.append(line)
+            if line.startswith('plugins'):
+                self.plugins_line = no
 
     def set_plugins(self, plugins: list):
-        pass
+        plugins_text = ' '.join(plugins)
+        self.lines[self.plugins_line] = f"plugins=({plugins_text}){linesep}"
 
     def save(self):
-        pass
+        write_to_file(self.zshrc_file, ''.join(self.lines))
 
 
 # Common Tools
@@ -71,14 +100,18 @@ packages.append("zsh")
 install_software(*packages)
 
 try:
-    run_shell_cmd('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"', timeout=20)
+    run_shell_cmd('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"',
+                  timeout=20)
 except subprocess.TimeoutExpired:
     # Exit zsh
     print("oh-my-zsh timeout")
     pass
 
 zshrc = Zshrc()
-plugins = ["git"]
+plugins = ["git", "autojump"]
+
+zshrc.set_plugins(plugins)
+zshrc.save()
 
 print("Finish!")
 
