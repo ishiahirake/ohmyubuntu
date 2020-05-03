@@ -8,3 +8,8 @@ The following software will be installed:
 
 - zsh
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
+
+PHP
+
+- The latest php
+- Composer
