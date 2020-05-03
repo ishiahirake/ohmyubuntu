@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+#
+
+# Install Python 3 if not present
+CURRENT_USER="$(whoami)"
+
+IS_ROOT=false
+if [ "$CURRENT_USER" = "root" ]
+then
+  IS_ROOT=true
+fi
+
+if $IS_ROOT
+then
+  apt update
+else
+  sudo update
+fi
+
+function install_software {
+  if $IS_ROOT
+  then
+    apt install -y $1
+  else
+    sudo apt install -y $1
+  fi
+}
+
+if ! [ -x "$(command -v python3)" ]
+then
+  install_software "python3"
+fi
+
+./ohmyubuntu.py
