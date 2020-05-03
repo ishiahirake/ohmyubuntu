@@ -2,6 +2,7 @@
   <dictionary name="kanamo">
     <words>
       <w>autojump</w>
+      <w>autosuggestions</w>
       <w>mlocate</w>
       <w>neofetch</w>
       <w>readlines</w>

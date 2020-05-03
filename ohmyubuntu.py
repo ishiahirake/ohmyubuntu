@@ -2,7 +2,7 @@
 
 import subprocess
 import sys
-from os.path import expanduser
+from os.path import expanduser, exists
 from os import sep, linesep
 
 
@@ -109,7 +109,10 @@ packages.append("composer")
 # Zsh
 
 packages.append("zsh")
-packages.append("zsh-syntax-highlighting")
+if not exists('/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh'):
+    packages.append('zsh-autosuggestions')
+if not exists('/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'):
+    packages.append("zsh-syntax-highlighting")
 install_software(*packages)
 
 try:
@@ -117,7 +120,7 @@ try:
                   timeout=20)
 except subprocess.TimeoutExpired:
     # Exit zsh
-    print("oh-my-zsh timeout")
+    print("exit zsh")
     pass
 
 zshrc = Zshrc()
@@ -125,8 +128,12 @@ plugins = ["git", "autojump"]
 
 zshrc.set_plugins(plugins)
 
+if 'zsh-autosuggestions' in packages:
+    zshrc.append("source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh")
+
 # this should be the last line of .zshrc file to make syntax-highlighting work
-zshrc.append("source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh")
+if 'zsh-syntax-highlighting' in packages:
+    zshrc.append("source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh")
 zshrc.save()
 
 print("Finish!")

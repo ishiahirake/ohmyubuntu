@@ -15,7 +15,7 @@ if $IS_ROOT
 then
   apt update
 else
-  sudo update
+  sudo apt update
 fi
 
 function install_software {
