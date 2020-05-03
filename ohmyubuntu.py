@@ -59,6 +59,12 @@ def install_software(*args) -> bool:
 
 
 class Zshrc(object):
+    """
+    .zshrc file object.
+
+    plugins: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
+    themes:  https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+    """
     def __init__(self) -> None:
         self.zshrc_file = sep.join([expanduser("~"), ".zshrc"])
 
@@ -87,6 +93,7 @@ packages = ["git", "curl", "neofetch"]
 
 # Productivity
 packages.append("autojump")
+packages.append("tig")
 
 # PHP
 

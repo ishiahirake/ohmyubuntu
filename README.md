@@ -6,10 +6,17 @@ Oh My Ubuntu is a script to set up a previous configured environment.
 
 The following software will be installed:
 
+### Productivity
+
+- autojump
+- tig
+
+### Zsh
+
 - zsh
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
 
-PHP
+### PHP
 
 - The latest php
 - Composer
