@@ -10,11 +10,13 @@ The following software will be installed:
 
 - autojump
 - tig
+- mlocate
 
 ### Zsh
 
 - zsh
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
 ### PHP
 

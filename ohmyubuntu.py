@@ -65,6 +65,7 @@ class Zshrc(object):
     plugins: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
     themes:  https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
     """
+
     def __init__(self) -> None:
         self.zshrc_file = sep.join([expanduser("~"), ".zshrc"])
 
@@ -83,6 +84,9 @@ class Zshrc(object):
         plugins_text = ' '.join(plugins)
         self.lines[self.plugins_line] = f"plugins=({plugins_text}){linesep}"
 
+    def append(self, line: str):
+        self.lines.append(line.rstrip(linesep) + linesep)
+
     def save(self):
         write_to_file(self.zshrc_file, ''.join(self.lines))
 
@@ -94,6 +98,7 @@ packages = ["git", "curl", "neofetch"]
 # Productivity
 packages.append("autojump")
 packages.append("tig")
+packages.append("mlocate")
 
 # PHP
 
@@ -104,6 +109,7 @@ packages.append("composer")
 # Zsh
 
 packages.append("zsh")
+packages.append("zsh-syntax-highlighting")
 install_software(*packages)
 
 try:
@@ -118,6 +124,9 @@ zshrc = Zshrc()
 plugins = ["git", "autojump"]
 
 zshrc.set_plugins(plugins)
+
+# this should be the last line of .zshrc file to make syntax-highlighting work
+zshrc.append("source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh")
 zshrc.save()
 
 print("Finish!")
