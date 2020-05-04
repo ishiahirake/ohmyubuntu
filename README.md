@@ -2,6 +2,11 @@
 
 Oh My Ubuntu is a script to set up a previous configured environment.
 
+Limitations:
+
+- When install zsh, you will be asked to change default shell to zsh or not,
+  No matter of your choice the zsh will be launched, type `exit` then this script will go on.
+
 ## Software
 
 The following software will be installed:
@@ -21,5 +26,5 @@ The following software will be installed:
 
 ### PHP
 
-- The latest php
+- php (latest version)
 - Composer

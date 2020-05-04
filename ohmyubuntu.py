@@ -2,11 +2,16 @@
 
 import subprocess
 import sys
-from os.path import expanduser, exists
+from os.path import expanduser
 from os import sep, linesep
 
 
 # Require Python >= 3.5
+
+def home(filepath: str = None) -> str:
+    home_path = expanduser('~')
+    return sep.join([home_path, filepath]) if filepath else home_path
+
 
 def file_readlines(file: str):
     with open(file, mode='r') as f:
@@ -40,6 +45,7 @@ def is_cmd_exists(cmd) -> bool:
 
 
 is_root = capture_cmd_output("whoami") == 'root'
+is_wsl = 'Microsoft' in capture_cmd_output('uname -a')
 
 
 def install_software(*args) -> bool:
@@ -109,31 +115,21 @@ packages.append("composer")
 # Zsh
 
 packages.append("zsh")
-if not exists('/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh'):
-    packages.append('zsh-autosuggestions')
-if not exists('/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'):
-    packages.append("zsh-syntax-highlighting")
 install_software(*packages)
 
-try:
-    run_shell_cmd('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"',
-                  timeout=20)
-except subprocess.TimeoutExpired:
-    # Exit zsh
-    print("exit zsh")
-    pass
+run_shell_cmd('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
+run_shell_cmd(
+    'git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions')
+run_shell_cmd(
+    'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting')
+if is_wsl:
+    run_shell_cmd('echo ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions | xargs chmod g-w,o-w')
+    run_shell_cmd('echo ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting | xargs chmod g-w,o-w')
 
 zshrc = Zshrc()
-plugins = ["git", "autojump"]
+plugins = ['git', 'autojump', 'zsh-autosuggestions', 'zsh-syntax-highlighting']
 
 zshrc.set_plugins(plugins)
-
-if 'zsh-autosuggestions' in packages:
-    zshrc.append("source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh")
-
-# this should be the last line of .zshrc file to make syntax-highlighting work
-if 'zsh-syntax-highlighting' in packages:
-    zshrc.append("source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh")
 zshrc.save()
 
 print("Finish!")

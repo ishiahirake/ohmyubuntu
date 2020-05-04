@@ -6,7 +6,9 @@
       <w>mlocate</w>
       <w>neofetch</w>
       <w>readlines</w>
+      <w>uname</w>
       <w>whoami</w>
+      <w>xargs</w>
       <w>zshrc</w>
     </words>
   </dictionary>
