@@ -29,6 +29,7 @@ Enabled plugins:
 - [autojump](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump)
 - [command-not-found](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found)
 - [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
+- [sudo](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo)
 - [tig](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tig)
 - [ubuntu](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
