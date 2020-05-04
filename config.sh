@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# -------------------------------
+# Config Zsh
+# -------------------------------
+
 # Install zsh
 wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 chmod a+x install.sh
