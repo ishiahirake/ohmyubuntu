@@ -4,9 +4,9 @@
 # And then switch to the target user to setup
 
 if [ $EUID -ne 0 ]; then
-  ./getpackages.sh
-else
   sudo ./getpackages.sh
+else
+  ./getpackages.sh
 fi
 
 ./config.sh
