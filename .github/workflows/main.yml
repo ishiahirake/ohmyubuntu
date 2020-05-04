@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Make ohmyubuntu executable
-        run: chmod a+x ./ohmyubuntu
+        run: chmod a+x ./ohmyubuntu ./ohmyubuntu.py
 
       # Runs a single command using the runners shell
       - name: run ohmyubuntu script
