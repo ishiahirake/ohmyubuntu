@@ -20,14 +20,14 @@ apt update
 
 # Install add-apt-repository if not exists
 if ! [ -x "$(command -v add-apt-repository)" ]; then
-  apt install -y software-properties-common
+  apt-get install -y software-properties-common
 fi
 
 # Install sudo for container
-apt install -y sudo
+apt-get install -y sudo
 
 # Productivity
-apt install -y git tig curl wget neofetch \
+apt-get install -y git tig curl wget neofetch \
                autojump command-not-found mlocate \
                zsh
 
@@ -41,5 +41,5 @@ if ! has_package "python3.8"; then
   add-apt-repository -y ppa:deadsnakes/ppa
 fi
 
-apt install -y php7.4 composer
-apt install -y python3.8
+apt-get install -y php7.4 composer
+apt-get install -y python3.8
