@@ -41,5 +41,5 @@ if ! has_package "python3.8"; then
   add-apt-repository -y ppa:deadsnakes/ppa
 fi
 
-apt-get install -y php7.4 composer
+apt-get install -y php7.4 php7.4-xml composer
 apt-get install -y python3.8

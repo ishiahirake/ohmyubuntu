@@ -47,5 +47,9 @@ all plugins can be fond here:
 
 ### PHP
 
-- php (latest version)
+- php (7.4)
 - Composer
+
+### Python
+
+- Python (3.8)
