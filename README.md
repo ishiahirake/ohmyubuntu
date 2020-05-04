@@ -24,6 +24,20 @@ The following software will be installed:
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
+Enabled plugins:
+
+- [autojump](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump)
+- [command-not-found](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found)
+- [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
+- [tig](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tig)
+- [ubuntu](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+
+all plugins can be fond here:
+
+- [Zsh Plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
+
 ### PHP
 
 - php (latest version)

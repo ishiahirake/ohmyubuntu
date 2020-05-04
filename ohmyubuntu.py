@@ -102,9 +102,10 @@ class Zshrc(object):
 packages = ["git", "curl", "neofetch"]
 
 # Productivity
-packages.append("autojump")
-packages.append("tig")
-packages.append("mlocate")
+packages.append('autojump')
+packages.append('command-not-found')
+packages.append('tig')
+packages.append('mlocate')
 
 # PHP
 
@@ -127,7 +128,7 @@ if is_wsl:
     run_shell_cmd('echo ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting | xargs chmod g-w,o-w')
 
 zshrc = Zshrc()
-plugins = ['git', 'autojump', 'zsh-autosuggestions', 'zsh-syntax-highlighting']
+plugins = ['git', 'autojump', 'command-not-found', 'tig', 'ubuntu', 'zsh-autosuggestions', 'zsh-syntax-highlighting']
 
 zshrc.set_plugins(plugins)
 zshrc.save()
