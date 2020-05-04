@@ -1,35 +1,68 @@
 #!/usr/bin/env bash
 
-#
+# Using root to install all the packages
+# And then switch to the target user to setup
 
-# Install Python 3 if not present
-CURRENT_USER="$(whoami)"
-
-IS_ROOT=false
-if [ "$CURRENT_USER" = "root" ]
-then
-  IS_ROOT=true
-fi
-
-if $IS_ROOT
-then
-  apt update
-else
-  sudo apt update
-fi
-
-function install_software {
-  if $IS_ROOT
+has_package() {
+  if apt-cache show "$1" &> /dev/null
   then
-    apt install -y $1
+    return 0
   else
-    sudo apt install -y $1
+    return 1
   fi
 }
 
-if ! [ -x "$(command -v python3)" ]
-then
-  install_software "python3"
+if [ $EUID -ne 0 ]; then
+  echo "This script should be run as root" 1 >& 2
+  exit 1
 fi
 
-./ohmyubuntu.py
+# -------------------------------
+# Install packages
+# -------------------------------
+
+# Disable tzdata interaction
+export DEBIAN_FRONTEND=noninteractive
+
+apt update
+
+# Install add-apt-repository if not exists
+if ! [ -x "$(command -v add-apt-repository)" ]; then
+  apt install -y software-properties-common
+fi
+
+# Install sudo for container
+apt install -y sudo
+
+# Productivity
+apt install -y git tig curl wget neofetch \
+               autojump command-not-found mlocate \
+               zsh
+
+# Install PHP 7.4
+if ! has_package "php7.xxx"; then
+  add-apt-repository -y ppa:ondrej/php
+fi
+
+# Install Python 3.8
+if ! has_package "python3.8"; then
+  add-apt-repository -y ppa:deadsnakes/ppa
+fi
+
+apt install -y php7.4 composer
+apt install -y python3.8
+
+# -------------------------------
+# Configuration
+# -------------------------------
+
+if [ $# -gt 0 ]; then
+  TARGET_USER=$1
+else
+  echo "The user you want to setup"
+  read -r TARGET_USER
+fi
+
+echo "Target user is $TARGET_USER"
+
+cat ./config.sh | sudo -i -u "$TARGET_USER" bash

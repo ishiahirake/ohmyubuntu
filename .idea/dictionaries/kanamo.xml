@@ -3,9 +3,11 @@
     <words>
       <w>autojump</w>
       <w>autosuggestions</w>
+      <w>chsh</w>
       <w>mlocate</w>
       <w>neofetch</w>
       <w>readlines</w>
+      <w>tzdata</w>
       <w>uname</w>
       <w>whoami</w>
       <w>xargs</w>

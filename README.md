@@ -6,6 +6,12 @@ Limitations:
 
 - When install zsh, you will be asked to change default shell to zsh or not,
   No matter of your choice the zsh will be launched, type `exit` then this script will go on.
+  
+## Usage
+
+```shell script
+./ohmyubuntu [Target User]
+```
 
 ## Software
 
