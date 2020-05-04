@@ -21,6 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: list files
+        run: ls -al
+
       # Runs a single command using the runners shell
       - name: run ohmyubuntu script
         run: ./ohmyubuntu
