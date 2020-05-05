@@ -10,12 +10,17 @@ chmod a+x install.sh
 ./install.sh --unattended
 rm -f install.sh
 
-# Change default shell to zsh
-if [ -x "$(command -v chsh)" ]; then
+# If user login shell is not zsh, change to it
+if [ -x "$(command -v chsh)" ] && ! [[ $SHELL =~ "zsh" ]]; then
   chsh -s $(command -v zsh)
 fi
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
-sed -i 's/plugins=(git)/plugins=(git autojump command-not-found sudo tig ubuntu zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+sed -i -e 's/^plugins=.*$/plugins=(git autojump command-not-found sudo tig ubuntu zsh-completions zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+
+# Required by zsh-completions
+# Note: autoload is zhs built-in command
+echo "autoload -U compinit && compinit" | zsh
