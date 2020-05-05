@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # -------------------------------
-# Config Zsh
+# Setup Zsh
 # -------------------------------
 
 # Install zsh

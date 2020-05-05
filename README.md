@@ -47,6 +47,7 @@ all plugins can be fond here:
 
 - php (7.4)
 - Composer
+- [Deployer](https://deployer.org/)
 
 ### Python
 

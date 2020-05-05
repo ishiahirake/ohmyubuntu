@@ -42,4 +42,11 @@ if ! has_package "python3.8"; then
 fi
 
 apt-get install -y php7.4 php7.4-xml php7.4-mysql composer
+# Deployer
+if ! [ -x "$(command -v dep)" ]; then
+  curl -LO https://deployer.org/deployer.phar
+  mv deployer.phar /usr/local/bin/dep
+  chmod +x /usr/local/bin/dep
+fi
+
 apt-get install -y python3.8
