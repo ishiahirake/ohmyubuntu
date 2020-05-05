@@ -23,4 +23,4 @@ sed -i -e 's/^plugins=.*$/plugins=(git autojump command-not-found sudo tig ubunt
 
 # Required by zsh-completions
 # Note: autoload is zhs built-in command
-echo "autoload -U compinit && compinit" | zsh
+zsh -c "autoload -U compinit && compinit"
