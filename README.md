@@ -17,6 +17,7 @@ The following software will be installed:
 - autojump
 - tig
 - mlocate
+- git-flow
 
 ### Zsh
 
@@ -31,6 +32,7 @@ Enabled plugins:
 - [autojump](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump)
 - [command-not-found](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found)
 - [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
+- [git-flow](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git-flow)
 - [sudo](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo)
 - [tig](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tig)
 - [ubuntu](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ubuntu)

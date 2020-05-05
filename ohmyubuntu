@@ -10,3 +10,6 @@ else
 fi
 
 ./config.sh
+
+# If script can reach here, simply return 0
+exit 0

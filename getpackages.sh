@@ -27,7 +27,7 @@ fi
 apt-get install -y sudo
 
 # Productivity
-apt-get install -y git tig curl wget neofetch \
+apt-get install -y git tig git-flow curl wget neofetch \
                autojump command-not-found mlocate \
                zsh
 
