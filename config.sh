@@ -19,7 +19,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
-sed -i -e 's/^plugins=.*$/plugins=(autojump git git-flow command-not-found sudo tig ubuntu zsh-completions zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+sed -i -e 's/^plugins=.*$/plugins=(autojump git git-flow command-not-found history sudo tig ubuntu zsh-completions zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
 
 # Required by zsh-completions
 # Note: autoload is zhs built-in command
