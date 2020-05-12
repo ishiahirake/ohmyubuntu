@@ -30,7 +30,7 @@ apt-get install -y sudo
 apt-get install -y git tig git-flow curl wget neofetch \
                autojump command-not-found mlocate \
                zsh \
-               vim
+               vim sqlite3
 
 # Install PHP 7.4
 if ! has_package "php7.xxx"; then
