@@ -54,7 +54,7 @@ apt-get install -y python3.8
 
 # Install Node 14
 # see https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions
-curl -sL https://deb.nodesource.com/setup_14.x | -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | bash -
 apt-get install -y nodejs
 
 # install yarn
