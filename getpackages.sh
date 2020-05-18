@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 has_package() {
-  if apt-cache show "$1" &> /dev/null
-  then
+  if apt-cache show "$1" &>/dev/null; then
     return 0
   else
     return 1
@@ -28,20 +27,16 @@ apt-get install -y sudo
 
 # Productivity
 apt-get install -y git tig git-flow curl wget neofetch \
-               autojump command-not-found mlocate \
-               zsh
+  autojump command-not-found mlocate \
+  zsh
 
 # Install PHP 7.4
-if ! has_package "php7.xxx"; then
+if ! has_package "php7.4"; then
   add-apt-repository -y ppa:ondrej/php
 fi
 
-# Install Python 3.8
-if ! has_package "python3.8"; then
-  add-apt-repository -y ppa:deadsnakes/ppa
-fi
-
 apt-get install -y php7.4 php7.4-xml php7.4-mysql composer
+
 # Deployer
 if ! [ -x "$(command -v dep)" ]; then
   curl -LO https://deployer.org/deployer.phar
@@ -49,4 +44,19 @@ if ! [ -x "$(command -v dep)" ]; then
   chmod +x /usr/local/bin/dep
 fi
 
+# Install Python 3.8
+if ! has_package "python3.8"; then
+  add-apt-repository -y ppa:deadsnakes/ppa
+fi
+
 apt-get install -y python3.8
+
+# Install Node 14
+# see https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions
+curl -sL https://deb.nodesource.com/setup_14.x | -E bash -
+apt-get install -y nodejs
+
+# install yarn
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+apt-get update && apt-get -y install yarn
