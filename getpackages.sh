@@ -27,8 +27,9 @@ apt-get install -y sudo
 
 # Productivity
 apt-get install -y git tig git-flow curl wget neofetch \
-  autojump command-not-found mlocate \
-  zsh
+               autojump command-not-found mlocate \
+               zsh \
+               vim sqlite3
 
 # Install PHP 7.4
 if ! has_package "php7.4"; then
