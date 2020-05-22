@@ -36,7 +36,7 @@ if ! has_package "php7.4"; then
   add-apt-repository -y ppa:ondrej/php
 fi
 
-apt-get install -y php7.4 php7.4-xml php7.4-mysql composer
+apt-get install -y php7.4 php7.4-xml php7.4-mysql php7.4-sqlite3 composer
 
 # Deployer
 if ! [ -x "$(command -v dep)" ]; then
